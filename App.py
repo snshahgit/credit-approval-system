@@ -14,7 +14,7 @@ st.set_page_config(layout="wide")
 with st.sidebar:
     
     choose = option_menu("Welcome", ["Home", "Tech Stack","Predictor","ML Code", "Contributors"],
-                         icons=['house', 'stack', 'cpu','code-slash', 'people-fill'],
+                         icons=['house', 'stack', 'cpu','terminal', 'people-fill'],
                          menu_icon="bank", default_index=0, 
                          
                          styles={
@@ -77,24 +77,25 @@ def pred():
        'ConsumerStaples', 'Healthcare', 'Research'))
     st.write("Client's industry of work")
 
-    YearsEmployed = st.number_input('',max_value=40,min_value=0)
+
+    YearsEmployed = st.slider('',0,40)
     st.write('Number of years of employment')
 
 
     
-    Age = st.number_input('',max_value=90,min_value=18)
-    st.write('Age')
+    Age = st.slider('',18,75)
+    st.write('Age of the client (in years)')
 
     
-    CreditScore = st.number_input('',max_value=31 , min_value=0)
-    st.write("Client's credit score")
+    CreditScore = st.slider('',0 , 20)
+    st.write("Client's credit score (CIBIL)")
 
     
-    Debt = st.number_input('',max_value=30,min_value=0)
-    st.write('Total debt of the client')
+    Debt = st.slider('',0, 30)
+    st.write('Total debt of the client (in thousand USD)')
     
     Income = st.number_input('',max_value=99999999999999,min_value=0)
-    st.write('Annual income of the client')
+    st.write('Annual income of the client (in thousand USD)')
     st.write("")
     df = pd.DataFrame({'Age':[Age], 'Debt': [Debt], 'BankCustomer': [BankCustomer], 'Industry':[Industry], 'YearsEmployed':[YearsEmployed], 'PriorDefault':[PriorDefault], 'Employed':[Employed], 'CreditScore':[CreditScore], 'DriversLicense':[DriversLicense], 'Income':[Income]})
 
